@@ -31,6 +31,9 @@ gem 'spring',        group: :development
 
 gem 'angular-rails-templates'
 
+gem 'pry'
+gem 'pry-rails'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
