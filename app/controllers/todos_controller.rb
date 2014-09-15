@@ -31,7 +31,7 @@ class TodosController < ApplicationController
   end
 
   def todo_params
-    params.require(:todo).permit(:task, :status)
+    params.require(:todo).permit(:task)
   end
 
   def render_main_layout_if_format_html

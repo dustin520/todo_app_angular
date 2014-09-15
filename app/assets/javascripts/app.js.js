@@ -17,7 +17,32 @@ TodoApp.config([
 
 TodoApp.controller("TodosCtrl", [
   "$scope", "$http", function($scope, $http) {
-    return $scope.todos = [];
+    $scope.todos = [];
+    $scope.getTodos = function() {
+      return $http.get("/todos.json").success(function(data) {
+        return $scope.todos = data;
+      });
+    };
+    $scope.getTodos();
+    $scope.addTodo = function() {
+      return $http.post("/todos.json", $scope.newTask).success(function(data) {
+        $scope.newTask = {};
+        return $scope.todos.push(data);
+      });
+    };
+    $scope.deleteTodo = function(todo) {
+      var conf;
+      conf = confirm("Are you sure?");
+      if (conf) {
+        return $http["delete"]("/todos/" + todo.id + ".json").success(function(data) {
+          return $scope.todos.splice($scope.todos.indexOf(todo), 1);
+        });
+      }
+    };
+    return $scope.editTodo = function(todo) {
+      this.checked = false;
+      return $http.put("/todos/" + this.todo.id + ".json", todo).success(function(data) {});
+    };
   }
 ]);
 

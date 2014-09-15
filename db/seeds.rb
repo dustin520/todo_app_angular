@@ -8,3 +8,4 @@
 
 
 task = Todo.create({task: "finish hangman", status: false})
+task2 = Todo.create({task: "finish todo", status: false})
