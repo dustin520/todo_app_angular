@@ -20,7 +20,7 @@ TodoApp.controller "TodosCtrl", ["$scope", "$http", ($scope, $http) ->
 ] # close todos controller
 
 
-# Define Config for CSRF token 
-TodoApp.config ["$httpProvider", ($httpProvider) ->
+# Define Config for CSRF token
+TodoApp.config ["$httpProvider", ($httpProvider)->
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
 ]
